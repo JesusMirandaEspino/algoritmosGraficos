@@ -2,27 +2,29 @@ class Matriz:
     def __init__(self):
         #Inicializar variables
         self.matriz = []
+        self.option  = 0
 
     # Lee lo seleccionado del menu 
     def accion(self):
         continuar = True
         while continuar:
             self.menu()
-            opcion = int(input("Seleccione una opción: "))
+            self.option = int(input("Seleccione una opción: "))
 
-            if opcion == 1:
-                fila = int(input("Ingrese el número de fila a sumar (1-3): "))
-                self.sumar_fila(fila)
-            elif opcion == 2:
-                columna = int(input("Ingrese el número de columna a sumar (1-3): "))
-                self.sumar_columna(columna)
-            elif opcion == 3:
-                self.sumar_matriz()
-            elif opcion == 4:
-                print("¡Que tengas un buen dia!")
-                continuar  = False
-            else:
-                print("Opción inválida. Intente nuevamente.")
+            match self.option:
+                case 1:
+                    fila = int(input("Ingrese el número de fila a sumar (1-3): "))
+                    self.sumar_fila(fila)
+                case 2:
+                    columna = int(input("Ingrese el número de columna a sumar (1-3): "))
+                    self.sumar_columna(columna)
+                case 3:
+                    self.sumar_matriz()
+                case 4:
+                    print("¡Que tengas un buen dia!")
+                    continuar  = False
+                case _:
+                    print("Opción inválida. Intente nuevamente.")
 
             
     # Iniciar la ejecucion del programa

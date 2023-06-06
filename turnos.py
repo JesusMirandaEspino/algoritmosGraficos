@@ -3,6 +3,7 @@ class Turnos:
         # Se genera una estructura de datos
         self.disponibles = [*range(1, 21, 1) ]
         self.asignados = []
+        self.opcion = 0
 
     # funcion para asignar un turno
     def asginar(self):
@@ -44,22 +45,23 @@ class Turnos:
             self.menu()
             print("Ingrese una opción: ")
             try:
-                opcion = int(input())
+                self.opcion = int(input())
             except ValueError:
-                opcion = 0
+                self.opcion = 0
             
             print('************************')
-            if opcion == 1:
-                self.asginar()
-            elif opcion == 2:
-                self.terminar()
-            elif opcion == 3:
-                self.pendientes()
-            elif opcion == 4:
-                print("Saliendo. Que tenga un Buen dia.")
-                iniciar = False
-            else:
-                print("Opción inválida. Intente nuevamente.")
+            match self.opcion:
+                case 1:
+                    self.asginar()
+                case 2:
+                    self.terminar()
+                case 3:
+                    self.pendientes()
+                case 4:
+                    print("Saliendo. Que tenga un Buen dia.")
+                    iniciar = False
+                case _:
+                    print("Opción inválida. Intente nuevamente.")
             
 
 banco = Turnos()
